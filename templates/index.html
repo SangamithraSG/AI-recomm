@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-white d-flex justify-content-center align-items-center" style="height:100vh;">
+
+<div class="card p-4 text-dark" style="width:400px;">
+    <h4 class="text-center">Product Recommendation</h4>
+
+    <form method="post">
+        <input type="text" name="user_id" class="form-control mb-3" placeholder="Enter User ID" required>
+        <button type="submit" class="btn btn-primary w-100">Get Recommendations</button>
+    </form>
+
+    {% if recommendations %}
+    <hr>
+    <ul class="list-group">
+        {% for item, score in recommendations %}
+        <li class="list-group-item">
+            Product ID: {{ item }} | Score: {{ score|round(2) }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+</body>
+</html>
